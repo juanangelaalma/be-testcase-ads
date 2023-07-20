@@ -74,4 +74,9 @@ class KaryawanController extends Controller
         $karyawan->delete();
         return ApiResponseService::success(null, null, 204);
     }
+
+    public function getKaryawanTerbaru() {
+        $karyawanTerbaru = Karyawan::orderBy('tanggal_bergabung', 'DESC')->take(3)->get();
+        return ApiResponseService::success($karyawanTerbaru, "Sukses mendapatkan data karyawan terbaru");
+    }
 }
