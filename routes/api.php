@@ -19,6 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('karyawan')->group(function() {
     Route::get('/', [KaryawanController::class, 'getAllKaryawan']);
     Route::post('/', [KaryawanController::class, 'createKaryawan']);
-    Route::put('/', [KaryawanController::class, 'updateKaryawan']);
-    Route::put('/', [KaryawanController::class, 'deleteKaryawan']);
+    Route::put('/{nomorInduk}', [KaryawanController::class, 'updateKaryawan']);
+    Route::delete('/{nomorInduk}', [KaryawanController::class, 'deleteKaryawan']);
 });

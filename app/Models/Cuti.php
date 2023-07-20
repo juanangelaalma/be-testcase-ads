@@ -11,7 +11,7 @@ class Cuti extends Model
 
     protected $table = "cuti";
 
-    protected $timestamps = false;
+    public $timestamps = false;
 
     public function karyawan() {
         return $this->belongsTo(Karyawan::class, "nomor_induk", "nomor_induk");
