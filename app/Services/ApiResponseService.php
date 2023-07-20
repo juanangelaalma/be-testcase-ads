@@ -12,12 +12,12 @@ class ApiResponseService {
     ], $code);
   }
 
-  public static function error($error = null, $message = null, $code = 500) {
+  public static function error($message = null, $code = 500) {
     return response([
       'success' => false,
       'data' => null,
       'message' => $message,
-      'error' => $error,
+      'error' => true,
     ], $code);
   }
 }
