@@ -101,6 +101,16 @@ class KaryawanController extends Controller
         }
     }
 
+    public function getKaryawanTerambilCuti()
+    {
+        try {
+            $karyawanTerambilCuti = Karyawan::has('cuti')->get();
+            return ApiResponseService::success($karyawanTerambilCuti, "Sukses mendapatkan data karyawan terambil cuti");
+        } catch (Exception $e) {
+            return ApiResponseService::error($e->getMessage(), 500);
+        }
+    }
+
     public function getKaryawanWithSisaCuti()
     {
         try {
