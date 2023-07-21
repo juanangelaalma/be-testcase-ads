@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('karyawan')->group(function() {
-    Route::get('/terbaru', [KaryawanController::class, 'getKaryawanTerbaru']);
+    Route::get('/terlama', [KaryawanController::class, 'getKaryawanTerlama']);
     Route::get('/sisa-cuti', [KaryawanController::class, 'getKaryawanWithSisaCuti']);
     Route::get('/terambil-cuti', [KaryawanController::class, 'getKaryawanTerambilCuti']);
 

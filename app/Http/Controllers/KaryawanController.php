@@ -91,10 +91,10 @@ class KaryawanController extends Controller
         }
     }
 
-    public function getKaryawanTerbaru()
+    public function getKaryawanTerlama()
     {
         try {
-            $karyawanTerbaru = Karyawan::orderBy('tanggal_bergabung', 'DESC')->take(3)->get();
+            $karyawanTerbaru = Karyawan::orderBy('tanggal_bergabung', 'ASC')->take(3)->get();
             return ApiResponseService::success($karyawanTerbaru, "Sukses mendapatkan data karyawan terbaru");
         } catch (Exception $e) {
             return ApiResponseService::error($e->getMessage(), 500);
