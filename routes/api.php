@@ -17,10 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('karyawan')->group(function() {
+    Route::get('/terbaru', [KaryawanController::class, 'getKaryawanTerbaru']);
+    Route::get('/sisa-cuti', [KaryawanController::class, 'getKaryawanWithSisaCuti']);
+
     Route::get('/', [KaryawanController::class, 'getAllKaryawan']);
     Route::post('/', [KaryawanController::class, 'createKaryawan']);
     Route::put('/{nomorInduk}', [KaryawanController::class, 'updateKaryawan']);
     Route::delete('/{nomorInduk}', [KaryawanController::class, 'deleteKaryawan']);
-
-    Route::get('/terbaru', [KaryawanController::class, 'getKaryawanTerbaru']);
 });

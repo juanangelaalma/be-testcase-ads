@@ -100,4 +100,22 @@ class KaryawanController extends Controller
             return ApiResponseService::error($e->getMessage(), 500);
         }
     }
+
+    public function getKaryawanWithSisaCuti()
+    {
+        try {
+            $karyawanWithSisaCuti = Karyawan::select('karyawan.nomor_induk', 'karyawan.nama')
+                ->leftJoin('cuti', 'karyawan.nomor_induk', '=', 'cuti.nomor_induk')
+                ->selectRaw('karyawan.nomor_induk, karyawan.nama, (12 - COALESCE(SUM(cuti.lama_cuti), 0)) as sisa_cuti')
+                ->groupBy('karyawan.nomor_induk', 'karyawan.nama')
+                ->get()->map(function ($karyawan) {
+                    $karyawan->sisa_cuti = (int) $karyawan->sisa_cuti;
+                    return $karyawan;
+                });
+
+            return ApiResponseService::success($karyawanWithSisaCuti, "Sukses mendapatkan data karyawan dengan sisa cuti");
+        } catch (Exception $e) {
+            return ApiResponseService::error($e->getMessage(), 500);
+        }
+    }
 }

@@ -8,7 +8,6 @@ class ApiResponseService {
       'success' => true,
       'data' => $data,
       'message' => $message,
-      'error' => null
     ], $code);
   }
 
@@ -17,7 +16,6 @@ class ApiResponseService {
       'success' => false,
       'data' => null,
       'message' => $message,
-      'error' => true,
     ], $code);
   }
 }

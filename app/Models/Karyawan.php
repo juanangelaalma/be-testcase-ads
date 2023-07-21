@@ -28,6 +28,6 @@ class Karyawan extends Model
     }
 
     public function cuti() {
-        return $this->hasOne(Cuti::class, "nomor_induk", "nomor_induk");
+        return $this->hasMany(Cuti::class, "nomor_induk", "nomor_induk");
     }
 }
