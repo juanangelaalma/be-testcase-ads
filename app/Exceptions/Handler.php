@@ -27,4 +27,16 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public function render($request, Throwable $e)
+    {
+        // Force to application/json rendering on API calls
+        if ($request->is('api*')) {
+            // set Accept request header to application/json
+            $request->headers->set('Accept', 'application/json');
+        }
+
+        // Default to the parent class' implementation of handler
+        return parent::render($request, $e);
+    }
 }
